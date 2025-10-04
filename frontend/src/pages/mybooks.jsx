@@ -15,7 +15,7 @@ const MyBooks = () => {
 
   const fetchMyBooks = async () => {
     try {
-      const resp = await API.get('/books/my');
+      const resp = await API.get('/api/books/my');
       setBooks(resp.data);
     } catch (err) {
       console.error(err);
@@ -25,7 +25,7 @@ const MyBooks = () => {
   const handleCreate = async (e) => {
     e.preventDefault();
     try {
-      await API.post('/books', newBook);
+      await API.post('/api/books', newBook);
       setNewBook({ title: '', author: '', condition: '', imageUrl: '' });
       setShowForm(false);
       fetchMyBooks();
@@ -37,7 +37,7 @@ const MyBooks = () => {
   const handleDelete = async (id) => {
     if (window.confirm('Are you sure you want to delete this book?')) {
       try {
-        await API.delete(`/books/${id}`);
+        await API.delete(`/api/books/${id}`);
         fetchMyBooks();
       } catch (err) {
         console.error(err);

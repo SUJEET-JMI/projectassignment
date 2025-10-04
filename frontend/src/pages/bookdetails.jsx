@@ -15,7 +15,7 @@ const BookDetails = () => {
 
   const fetchBook = async () => {
     try {
-      const resp = await API.get(`/books/${id}`);
+      const resp = await API.get(`/api/books/${id}`);
       setBook(resp.data);
     } catch (err) {
       console.error(err);
@@ -26,7 +26,7 @@ const BookDetails = () => {
 
   const handleRequest = async () => {
     try {
-      await API.post('/requests', { bookId: id });
+      await API.post('/api/requests', { bookId: id });
       alert('Request sent!');
     } catch (err) {
       console.error(err);

@@ -8,7 +8,7 @@ const Home = () => {
   const [books, setBooks] = useState([]);
 
   useEffect(() => {
-    API.get('/books').then(resp => {
+    API.get('/api/books').then(resp => {
       setBooks(resp.data);
     }).catch(err => {
       console.error(err);
@@ -17,7 +17,7 @@ const Home = () => {
 
   const handleRequest = async (bookId) => {
     try {
-      await API.post('/requests', { bookId });
+      await API.post('/api/requests', { bookId });
       alert('Request sent!');
     } catch (err) {
       console.error(err);
